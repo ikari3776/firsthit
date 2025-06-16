@@ -6,13 +6,9 @@ Rails.application.routes.draw do
   delete "logout", to: "user_sessions#destroy"
   resources :ranks, only: %i[index]
   resources :password_resets, only: %i[new create edit update]
-  resources :static_pages, path: '/' do
-    collection do
-      get :terms
-      get :policy
-      get :rules
-    end
-  end
+  get "rules", to: "static_pages#rules"
+  get "terms", to: "static_pages#terms"
+  get "policy", to: "static_pages#policy"
   resources :badges, only: %i[index]
   resources :games, only: %i[index] do
     collection do
