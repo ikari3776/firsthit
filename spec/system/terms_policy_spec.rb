@@ -11,8 +11,8 @@ RSpec.describe "利用規約、プライバシーポリシー", type: :system do
 
   describe "プライバシーポリシー画面" do
     it "プライバシーポリシー画面に遷移できる" do
-      visit policy_index_path
-      expect(current_path).to eq policy_index_path
+      visit policy_path
+      expect(current_path).to eq policy_path
       expect(page).to have_content("プライバシーポリシー")
     end
   end
