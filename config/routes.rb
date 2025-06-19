@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "rules", to: "static_pages#rules"
   get "terms", to: "static_pages#terms"
   get "policy", to: "static_pages#policy"
+  get "about", to: "static_pages#about"
   resources :badges, only: %i[index]
   resources :games, only: %i[index] do
     collection do
