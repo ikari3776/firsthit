@@ -2,7 +2,7 @@
 <div class="text-center">
   <h2>ゲーム終了！お疲れさまでした！</h2>
   <p>合計得点: <strong><%= @total_score %>点</strong> !</p>
-  
+
   <% tweet_text = "画像検索ゲーム「FIRST HIT」で#{@total_score} 点獲得したよ！ みんなも挑戦しよう！" %>
   <% tweet_url = "https://first-hit.com?v=5" %> 
   <% hashtags = "FIRSTHIT,画像検索ゲーム" %>
@@ -32,12 +32,27 @@
   }
 </style>
 
-<a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(tweet_text) %>&url=<%= CGI.escape(tweet_url) %>&hashtags=<%= CGI.escape(hashtags) %>" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  class="x-share-button btn btn-info">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" alt="Xロゴ">
-  で共有
-</a>
+  <a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(tweet_text) %>&url=<%= CGI.escape(tweet_url) %>&hashtags=<%= CGI.escape(hashtags) %>" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="x-share-button btn btn-info">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg" alt="Xロゴ">
+    で共有
+  </a>
 
+  <% if @new_badges.present? %>
+    <div class="bg-light p-3 rounded my-3 border mx-auto" style="max-width: 600px;">
+      <strong>新しい称号を獲得しました！</strong>
+      
+      <div class="mt-2">
+        <% @new_badges.each do |badge| %>
+          <div><%= badge.name %></div>
+        <% end %>
+      </div>
+
+      <div class="text-center mt-3">
+        <%= link_to '称号ページへ', badges_path, class: 'btn btn-sm btn-outline-primary' %>
+      </div>
+    </div>
+  <% end %>
 </div>

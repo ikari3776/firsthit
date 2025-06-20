@@ -38,6 +38,10 @@ class GamesController < ApplicationController
     @position = ranked_ids.index(@random_image.id)&.+(1)
     @score = calculate_score(@position)
 
+    if @position == 1 && current_user.present?
+      current_user.increment!(:first_hit_count)
+    end
+
     session[:total_score] += @score
     @current_round = session[:game_round]
     session[:game_round] += 1 if session[:game_round] <= 5
@@ -49,11 +53,13 @@ class GamesController < ApplicationController
     @total_score = session[:total_score]
 
     if logged_in?
-      Game.create!(
+      @game = Game.create!(
         user_id: current_user.id,
         total_score: @total_score,
         finished_at: Time.current
       )
+
+      @new_badges = current_user.assign_new_badges_from_game(@game)
     end
 
     session.delete(:game_round)
