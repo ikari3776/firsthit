@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_20_070008) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_20_105620) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_20_070008) do
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.integer "access_count_to_reset_password_page", default: 0
-    t.integer "selected_badge_id"
+    t.integer "selected_badge_id", default: 1
     t.integer "first_hit_count", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true

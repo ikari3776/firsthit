@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "policy", to: "static_pages#policy"
   get "about", to: "static_pages#about"
   resources :badges, only: %i[index]
+  patch '/badges/select/:id', to: 'badges#select', as: :select_badge
   resources :games, only: %i[index] do
     collection do
       get :search, as: "search"
