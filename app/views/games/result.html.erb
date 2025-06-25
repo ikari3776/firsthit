@@ -1,7 +1,9 @@
 <% content_for(:title, 'ゲーム結果') %>
 <div class="text-center">
   <h2>ゲーム終了！お疲れさまでした！</h2>
-  <p>合計得点: <strong><%= @total_score %>点</strong> !</p>
+  <div class="alert alert-info mx-auto text-center shadow-sm mb-3" style="max-width: 300px;">
+    <h5>合計得点: <strong><%= @total_score %>点</strong> !</h5>
+  </div>
 
   <% tweet_text = "画像検索ゲーム「FIRST HIT」で#{@total_score} 点獲得したよ！ みんなも挑戦しよう！" %>
   <% tweet_url = "https://first-hit.com?v=5" %> 
@@ -41,7 +43,7 @@
   </a>
 
   <% if @new_badges.present? %>
-    <div class="bg-light p-3 rounded my-3 border mx-auto" style="max-width: 600px;">
+    <div class="bg-warning p-3 rounded my-3 border mx-auto" style="max-width: 600px;">
       <strong>新しい称号を獲得しました！</strong>
       
       <div class="mt-2">
@@ -51,7 +53,7 @@
       </div>
 
       <div class="text-center mt-3">
-        <%= link_to '称号ページへ', badges_path, class: 'btn btn-sm btn-outline-primary' %>
+        <%= link_to '称号ページへ', badges_path, class: 'btn btn-sm btn-danger' %>
       </div>
     </div>
   <% end %>

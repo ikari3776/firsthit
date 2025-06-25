@@ -11,7 +11,7 @@
       <img src="https://i.gyazo.com/a19dd94b531a6361ad57ef79a20c7459.gif" alt="ユーザー登録GIF" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     メニューバーの「ユーザー登録」を選択し、ユーザー登録画面に移動します。<br>
     『メールアドレス』『ユーザー名（半角英数字のみ）』『パスワード』『パスワード確認』を入力してユーザー登録を行います。<br>
     または、画面右下の「Gログイン」を押すことでGoogleアカウントを使ってログインすることも可能です。
@@ -25,12 +25,14 @@
       <img src="https://i.gyazo.com/58f7769091f5450661ed0233fb13cd52.gif" alt="ログインGIF" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     ユーザー登録を行うと自動的にログインされます。右上の表示でログイン中であるかを確認することができます。<br>
   </p>
-  <p class="text-danger">
-    ※ログイン中でない場合、「ランキング」には参加できませんのでご注意ください。
-  </p>
+  <% unless logged_in? %>
+    <p class="text-danger text-center">
+      ※ログイン中でない場合、「ランキング」には参加できませんのでご注意ください。
+    </p>
+  <% end %>
 
   <hr>
 
@@ -40,7 +42,7 @@
       <img src="https://i.gyazo.com/d6a7ad116a6b19aaca96a6b0ff2503ab.gif" alt="ゲーム開始GIF" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     メニューバーから「プレイ」を選択するとゲームが始まります。第1問から第5問までの全5問あります。
   </p>
 
@@ -52,7 +54,7 @@
       <img src="https://i.gyazo.com/1f3d3c9352de9ef932808294640b1075.gif" alt="ゲーム進行GIF1" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     表示されている画像に合う検索ワードを考え、入力します。入力が完了したら「検索」を押します。
   </p>
 
@@ -64,7 +66,7 @@
       <img src="https://i.gyazo.com/e01c4cda43279c040bfdc333c038680c.gif" alt="ゲーム進行GIF2" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     検索結果が表示されます。先ほど表示された画像が何番目にヒットしたかを確認します。<br>
     また、獲得した得点や検索結果上位10位の画像を確認することができます。<br>
     検索結果を確認したら次の問題へ進みます。
@@ -78,9 +80,9 @@
       <img src="https://i.gyazo.com/6b69e6ccc614d0b6b177ca81dd01b222.gif" alt="ゲーム終了GIF" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     5問目まで終えたら、「結果を見る」を押し、結果を見ます。合計得点を確認することができます。<br>
-    「Xに共有」を押すことで結果をシェアすることもできます。
+    「Xで共有」を押すことで結果をシェアすることもできます。
   </p>
 
   <hr>
@@ -91,13 +93,15 @@
       <img src="https://i.gyazo.com/33eb10abcdca01c5f4aff18a7cb0ae36.gif" alt="ランキングGIF" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     メニューバーの「ランキング」から全体のランキングを確認することができます。<br>
     自分の最高得点、順位に加えて、全ユーザーの上位10位の結果も確認できます。<br>
   </p>
-  <p class="text-danger">
-    ※ランキング参加にはログインが必要です。
-  </p>
+  <% unless logged_in? %>
+    <p class="text-danger text-center">
+      ※ランキング参加にはログインが必要です。
+    </p>
+  <% end %>
 
   <hr>
 
@@ -107,25 +111,29 @@
       <img src="https://i.gyazo.com/3ef4ff87ef61aefa51273a6651e74a16.gif" alt="称号GIF1" class="img-fluid">
     </a>
   </div>
-  <p>
+  <p class="text-center">
     メニューバーの「称号」から獲得した称号を確認することができます。<br>
   </p>
-  <p class="text-danger">
-    ※この機能を利用するにはログインが必要です。
-  </p>
+  <% unless logged_in? %>
+    <p class="text-danger text-center">
+      ※この機能を利用するにはログインが必要です。
+    </p>
+  <% end %>
 
   <hr>
 
   <h2 class="text-center">称号➁</h2>
   <div class="text-center">
-    <a href="https://gyazo.com/bd8f89cf7cf8764a4606b879912e0666" target="_blank">
-      <img src="https://i.gyazo.com/bd8f89cf7cf8764a4606b879912e0666.gif" alt="称号GIF2" class="img-fluid">
+    <a href="https://gyazo.com/1ccaf6a388f30a91d2cffe95ec7e0479" target="_blank">
+      <img src="https://i.gyazo.com/1ccaf6a388f30a91d2cffe95ec7e0479.gif" alt="称号GIF2" class="img-fluid">
     </a>
   </div>
-  <p>
-    メニューバーの「設定」から獲得した称号をユーザー名の横に付けることができます。<br>
+  <p class="text-center">
+    メニューバーの「称号」で獲得した称号の右上の☆マークを押すとお気に入り登録され、ユーザー名の横に付けることができます。<br>
   </p>
-  <p class="text-danger">
-    ※この機能を利用するにはログインが必要です。
-  </p>
+  <% unless logged_in? %>
+    <p class="text-danger text-center">
+      ※この機能を利用するにはログインが必要です。
+    </p>
+  <% end %>
 </div>

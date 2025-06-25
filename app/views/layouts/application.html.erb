@@ -27,24 +27,26 @@
   </head>
 
   <body>
-    <header style="background-color: #94e3e4; position: fixed; top: 0; left: 0; width: 100%;">
+    <header style="background-color: #94e3e4; position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;">
       <div class="container-fluid d-flex justify-content-between align-items-center px-3 py-2">
-        <div>
+        <%= link_to root_path do %>
           <%= image_tag asset_path('firsthit_header.png'), alt: 'ヘッダー', style: 'height: 30px; width: auto;' %>
-        </div>
+        <% end %>
 
         <div>
           <% if logged_in? %>
-            <p class="small mb-0 text-success">
-              ログイン中: <%= current_user.name %>
-              <% if current_user.selected_badge_id.present? %>
-                <% badge = Badge.find_by(id: current_user.selected_badge_id) %>
-                <% if badge %>
-                  <%= image_tag asset_path(badge.image), style: 'width: 20px; height: 20px; vertical-align: middle;' %>
+            <%= link_to edit_user_path(current_user), class: "text-decoration-none" do %>
+              <p class="small mb-0 text-success">
+                ログイン中: <%= current_user.name %>
+                <% if current_user.selected_badge_id.present? %>
+                  <% badge = Badge.find_by(id: current_user.selected_badge_id) %>
+                  <% if badge %>
+                    <%= image_tag asset_path(badge.image), style: 'width: 20px; height: 20px; vertical-align: middle;' %>
+                  <% end %>
                 <% end %>
-              <% end %>
-              さん
-            </p>
+                さん
+              </p>
+            <% end %>
           <% else %>
             <p class="small mb-0 text-danger">ログインしていません</p>
           <% end %>

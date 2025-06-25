@@ -1,9 +1,19 @@
 <% content_for(:title, '称号') %>
 <h2 class="text-center">称号</h2>
 <div class="alert alert-info text-center mx-auto" style="max-width: 400px;">
-  <h5>最高得点:<%= @score %>点</h5>
-  <h5>プレイ回数:<%= @count %>回</h5>
-  <h5>FIRST HIT回数:<%= @first_hit_count %>回</h5>
+  <h4>
+    <%= current_user.name %>
+      <% if current_user.selected_badge_id.present? %>
+        <% badge = Badge.find_by(id: current_user.selected_badge_id) %>
+        <% if badge %>
+          <%= image_tag asset_path(badge.image), style: 'width: 25px; height: 25px; margin-left: 8px; vertical-align: middle;' %>
+        <% end %>
+      <% end %>
+    の成績
+  </h4>
+  <h5>最高得点: <%= @score %>点</h5>
+  <h5>プレイ回数: <%= @count %>回</h5>
+  <h5>FIRST HIT回数: <%= @first_hit_count %>回</h5>
 </div>
 
 <div class="container">
@@ -11,13 +21,14 @@
     <% @badges.each do |badge| %>
       <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
         <div class="card position-relative">
-          <div class="mx-2">
+          <div class="position-absolute top-0 end-0 m-2">
             <% if current_user.selected_badge_id == badge.id %>
-              <%= button_to "★", select_badge_path(badge), method: :patch, class: "btn btn-sm text-warning mt-2 fs-5" %>
+              <%= button_to "★", select_badge_path(badge), method: :patch, class: "btn btn-sm text-warning fs-4" %>
             <% else %>
-              <%= button_to "☆", select_badge_path(badge), method: :patch, class: "btn btn-sm text-warning mt-2 fs-5" %>
+              <%= button_to "☆", select_badge_path(badge), method: :patch, class: "btn btn-sm text-warning fs-4" %>
             <% end %>
           </div>
+
           <div class="text-center">
             <%= image_tag asset_path(badge.image), alt: badge.name, class: 'card-img-top p-3', style: 'height: 200px; object-fit: contain;' %>
 
@@ -29,14 +40,17 @@
         </div>
       </div>
     <% end %>
-    
+
     <% @no_achieved_badges.each do |badge| %>
       <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="card text-center">
+        <div class="card position-relative text-center">
+          <div class="position-absolute top-0 end-0 m-2" style="width: 40px; height: 40px;"></div>
+
           <%= image_tag asset_path('hatena.png'), alt: badge[:name], class: 'card-img-top p-3', style: 'height: 200px; object-fit: contain;' %>
+
           <div class="card-body">
             <h5 class="card-title"><%= badge[:name] %></h5>
-            <h6 class="card-title">未達成</h5>
+            <h6 class="card-title">未達成</h6>
           </div>
         </div>
       </div>

@@ -16,8 +16,8 @@
     画像提供：<a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a>
   </p>
 
-  <div class="card p-2 shadow-sm">
-    <p class="fs-5"><strong>検索ワード:</strong> <span class="badge bg-secondary"><%= @query_text %></span></p>
+  <div class="card p-1 mx-auto text-center shadow-sm" style="max-width: 400px;">
+    <p><strong>検索ワード:</strong> <span class="badge bg-secondary fs-6"><%= @query_text %></span></p>
       <% if @position.nil? %>
         <p><strong>検索結果:</strong> 101位以下</p>
         <p><strong>得点:</strong> 0点</p>
@@ -34,11 +34,11 @@
       <% end %>
   </div>
 
-  <div class="text-center">
+  <div class="text-center mt-1">
     <% if session[:game_round] > 5 %>
       <%= link_to "結果を見る", result_games_path(round: @current_round), class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "次の問題へ", games_path, class: "btn btn-secondary" %>
+      <%= link_to "次の問題へ", games_path, class: "btn btn-primary" %>
     <% end %>
   </div>
 

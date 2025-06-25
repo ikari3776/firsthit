@@ -4,9 +4,9 @@
     <i class="bi bi-trophy-fill text-warning"></i></i> ランキング <i class="bi bi-trophy-fill text-warning"></i>
   </h1>
 
-  <% if logged_in? %>
-    <div class="alert alert-info text-center">
-      <% if @user_rank %>
+  <div class="alert alert-info text-center mx-auto" style="max-width: 400px;">
+    <% if logged_in? %>
+      <% if @current_user_rank %>
         <h4>
           <%= current_user.name %>
             <% if current_user.selected_badge_id.present? %>
@@ -18,18 +18,16 @@
           の成績
         </h4>
         <p class="mb-0">
-          <span class="badge bg-primary fs-5"><%= @user_rank + 1 %> 位</span>
-          <span class="fs-5"><%= @user_score %> 点</span>
+          <span class="badge bg-primary fs-5"><%= @current_user_rank %> 位</span>
+          <span class="fs-5"><%= @current_user_high_score %> 点</span>
         </p>
       <% else %>
         <p>まだゲームをプレイしていません</p>
       <% end %>
-    </div>
-  <% else %>
-    <div class="alert alert-warning text-center">
+    <% else %>
       <p>ログインするとランキングに参加できます</p>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
   <table class="table table-bordered text-center">
     <thead class="table-dark">
@@ -42,33 +40,36 @@
     </thead>
     <tbody>
       <% prev_score = nil %>
-      <% rank_number = 0 %>
-      <% display_rank = 0 %>
-
-      <% @ranks.each do |user| %>
-        <% rank_number += 1 %>
-        <% if user.max_total_score != prev_score %>
-          <% display_rank = rank_number %>
-        <% end %>
-
+      <% j = 1 %>
+      <% @top_ten_games.each.with_index(1) do |game, i| %>
         <tr>
-          <td class="fw-bold"><%= display_rank %> 位</td>
+          <td class="fw-bold">
+            <% if i == 1 %>
+              <% prev_score = game.total_score %>
+            <% end %>
+
+            <% if game.total_score == prev_score %>
+              <%= j %> 位
+              <% prev_score = game.total_score %>
+            <% else %>
+              <%= j = i %> 位
+              <% prev_score = game.total_score %>
+            <% end %>
+          </td>
           <td>
             <p>
-              <%= user.name %>
-              <% if user.selected_badge_id.present? %>
-                <% badge = Badge.find_by(id: user.selected_badge_id) %>
+              <%= game.user.name %>
+              <% if game.user.selected_badge_id.present? %>
+                <% badge = Badge.find_by(id: game.user.selected_badge_id) %>
                 <% if badge %>
                   <%= image_tag asset_path(badge.image), style: 'width: 25px; height: 25px; margin-left: 8px; vertical-align: middle;' %>
                 <% end %>
               <% end %>
             </p>
           </td>
-          <td class="fw-bold text-primary"><%= user.max_total_score.to_i %> 点</td>
-          <td><%= (user.latest_finished_at || Time.parse('2099-01-01')).in_time_zone('Asia/Tokyo').strftime('%Y-%m-%d %H:%M:%S') %></td>
+          <td class="fw-bold text-primary"><%= game.total_score %> 点</td>
+          <td><%= (game.finished_at || Time.parse('2099-01-01')).in_time_zone('Asia/Tokyo').strftime('%Y-%m-%d %H:%M:%S') %></td>
         </tr>
-
-        <% prev_score = user.max_total_score %>
       <% end %>
     </tbody>
   </table>
