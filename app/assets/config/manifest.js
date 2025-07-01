@@ -2,4 +2,4 @@
 //= link_tree ../builds
 //= link sidebar.css
 //= link loading.css
-//= link loading.js
+//= link custom/loading.js
