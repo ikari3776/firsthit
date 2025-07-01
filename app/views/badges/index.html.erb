@@ -23,7 +23,7 @@
         <div class="card position-relative">
           <div class="position-absolute top-0 end-0 m-2">
             <% if current_user.selected_badge_id == badge.id %>
-              <%= button_to "★", select_badge_path(badge), method: :patch, class: "btn btn-sm text-warning fs-4" %>
+              <p class="text-warning fs-4 m-2">★</p>
             <% else %>
               <%= button_to "☆", select_badge_path(badge), method: :patch, class: "btn btn-sm text-warning fs-4" %>
             <% end %>

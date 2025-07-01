@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
   resources :ranks, only: %i[index]
+  resources :rules, only: %i[index]
   resources :password_resets, only: %i[new create edit update]
-  get "rules", to: "static_pages#rules"
   get "terms", to: "static_pages#terms"
   get "policy", to: "static_pages#policy"
   get "about", to: "static_pages#about"

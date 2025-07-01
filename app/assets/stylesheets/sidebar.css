@@ -1,0 +1,50 @@
+.menu-container {
+  position: fixed;
+  background-color: #94e3e4;
+  z-index: 1000;
+}
+
+@media (orientation: portrait) {
+  .menu-container {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 0.2rem;
+    border-top: 1px solid #ccc;
+    padding: 0.5rem;
+  }
+
+  main {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+
+  header {
+    height: 50px;
+  }
+}
+
+
+@media (orientation: landscape) {
+    .menu-container {
+    top: 50px;
+    left: 0;
+    height: calc(100vh - 60px);
+    width: 100px;
+    border-right: 1px solid #ccc;
+    padding: 1rem 0.5rem;
+    }
+
+    main {
+    margin-left: 100px;
+    margin-top: 50px;
+    }
+
+    header {
+    height: 50px;
+    }
+}
