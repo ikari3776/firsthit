@@ -75,8 +75,8 @@
 
 | 称号➁ |
 | :---: | 
-| [![Image from Gyazo](https://i.gyazo.com/bd8f89cf7cf8764a4606b879912e0666.gif)](https://gyazo.com/bd8f89cf7cf8764a4606b879912e0666) |
-| <p align="left">メニューバーの「設定」から獲得した称号をユーザー名の横に付けることができます。<br>この機能を利用するにはログインが必要です。</p> |
+| [![Image from Gyazo](https://i.gyazo.com/1ccaf6a388f30a91d2cffe95ec7e0479.gif)](https://gyazo.com/1ccaf6a388f30a91d2cffe95ec7e0479) |
+| <p align="left">メニューバーの「称号」で獲得した称号の右上の☆マークを押すとお気に入り登録され、ユーザー名の横に付けることができます。<br>この機能を利用するにはログインが必要です。</p> |
 <br>
 
 画面遷移図-figma: https://www.figma.com/design/MjKIqnr2Ew5b7Wxq3Ij4gh/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C?node-id=0-1&t=FgV82hne3m5tOgkA-1
