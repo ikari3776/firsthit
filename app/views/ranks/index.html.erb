@@ -42,7 +42,8 @@
       <% prev_score = nil %>
       <% j = 1 %>
       <% @top_ten_games.each.with_index(1) do |game, i| %>
-        <tr>
+        <% highlight = game.user.id == current_user.id ? 'table-warning' : '' %>
+        <tr class="<%= highlight %>">
           <td class="fw-bold">
             <% if i == 1 %>
               <% prev_score = game.total_score %>

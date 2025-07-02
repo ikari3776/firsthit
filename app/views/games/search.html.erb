@@ -46,8 +46,11 @@
     <h3 class="text-center mb-3">上位10位の画像</h3>
     <div class="row">
       <% @similar_images.each do |image| %>
+        <% is_target = (image[:image].url == @random_image.url) %>
+        <% card_classes = is_target ? 'card target-card' : 'card' %>
+
         <div class="col-md-3 col-sm-6 mb-3">
-          <div class="card">
+          <div class="<%= card_classes %>">
             <%= image_tag image[:image].url, alt: "ゲーム画像", class: "card-img-top" %>
           </div>
         </div>

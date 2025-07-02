@@ -9,31 +9,6 @@
   <% tweet_url = "https://first-hit.com?v=5" %> 
   <% hashtags = "FIRSTHIT,画像検索ゲーム" %>
 
-<style>
-  .x-share-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color:
-    color:
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 8px;
-    width: 150px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-decoration: none;
-  }
-
-  .x-share-button img {
-    width: 18px;
-    height: 18px;
-    margin-right: 10px;
-  }
-</style>
-
   <a href="https://twitter.com/intent/tweet?text=<%= CGI.escape(tweet_text) %>&url=<%= CGI.escape(tweet_url) %>&hashtags=<%= CGI.escape(hashtags) %>" 
     target="_blank" 
     rel="noopener noreferrer"
