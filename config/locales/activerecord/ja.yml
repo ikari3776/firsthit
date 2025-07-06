@@ -11,4 +11,5 @@ ja:
       contact:
         name: '名前'
         email: 'メールアドレス'
+        message: '件名'
         subject: '内容'
